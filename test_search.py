@@ -20,6 +20,8 @@ def test_search_bmw(app):
     app.fill_fields_to_search(search_options)
     app.click_search_button()
     assert app.check_text_on_search_form() == search_options_list
+    assert app.count() == 10
+    assert app.result_equals_search_options(mark, model)
     if app.count() == 10:
         print("Количество объявлений равно 10")
         app.go_to_home_page()
